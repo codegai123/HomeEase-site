@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - HomeEase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen transition">  <!-- Header -->  <header class="flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 shadow-md">
+    <div class="text-2xl font-bold text-blue-600">HomeEase</div>
+    <nav class="hidden md:flex space-x-6">
+      <a href="index.html" class="hover:text-blue-500">Home</a>
+      <a href="listings.html" class="hover:text-blue-500">Listings</a>
+      <a href="settings.html" class="text-blue-600 font-semibold">Settings</a>
+    </nav>
+  </header>  <!-- Settings Layout -->  <main class="flex flex-col md:flex-row max-w-6xl mx-auto p-6 gap-8"><!-- Sidebar -->
+<aside class="md:w-1/4 bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+  <h2 class="text-lg font-semibold mb-4">Settings Menu</h2>
+  <ul class="space-y-3 text-sm">
+    <li><a href="#account" class="block hover:text-blue-600">Account</a></li>
+    <li><a href="#preferences" class="block hover:text-blue-600">Preferences</a></li>
+    <li><a href="#actions" class="block hover:text-blue-600">Actions</a></li>
+  </ul>
+</aside>
+
+<!-- Content -->
+<section class="flex-1 space-y-10">
+
+  <!-- Account Settings -->
+  <div id="account" class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">Account Settings</h2>
+    <form class="grid gap-4">
+      <div>
+        <label class="block text-sm mb-1">Username</label>
+        <input type="text" value="ucheoma" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+      </div>
+      <div>
+        <label class="block text-sm mb-1">Email Address</label>
+        <input type="email" value="user@example.com" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+      </div>
+      <div>
+        <label class="block text-sm mb-1">Change Password</label>
+        <input type="password" placeholder="New password" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+      </div>
+    </form>
+  </div>
+
+  <!-- Preferences -->
+  <div id="preferences" class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">Preferences</h2>
+    <form class="space-y-4">
+      <div class="flex items-center">
+        <input type="checkbox" id="toggleDark" class="mr-2">
+        <label for="toggleDark">Enable Dark Mode</label>
+      </div>
+      <div class="flex items-center">
+        <input type="checkbox" checked class="mr-2">
+        <label>Receive Notifications</label>
+      </div>
+      <div>
+        <label class="block mb-1">Language</label>
+        <select class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+          <option>English</option>
+          <option>French</option>
+          <option>Yoruba</option>
+          <option>Igbo</option>
+        </select>
+      </div>
+    </form>
+  </div>
+
+  <!-- Actions -->
+  <div id="actions" class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">Actions</h2>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="success page .html" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Save Changes</a>
+      <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete Account</button>
+    </div>
+  </div>
+
+</section>
+
+  </main>  <!-- Footer -->  <footer class="bg-white dark:bg-gray-800 text-center py-6 text-sm text-gray-500 dark:text-gray-400 border-t dark:border-gray-700 mt-12">
+    &copy; 2025 HomeEase Rentals. All rights reserved.
+  </footer>  <!-- Scripts -->  <script>
+    const darkToggle = document.getElementById('toggleDark');
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.documentElement.classList.add('dark');
+      darkToggle.checked = true;
+    }
+    darkToggle.addEventListener('change', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+    });
+  </script></body>
+</html>

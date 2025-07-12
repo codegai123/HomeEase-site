@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog - HomeEase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white transition">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 shadow-md">
+    <div class="text-2xl font-bold text-blue-600">HomeEase</div>
+    <nav class="hidden md:flex space-x-6">
+      <a href="index.html" class="hover:text-blue-500">Home</a>
+      <a href="listings.html" class="hover:text-blue-500">Listings</a>
+      <a href="blog.html" class="text-blue-600 font-semibold">Blog</a>
+      <a href="contact.html" class="hover:text-blue-500">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Blog Banner -->
+  <section class="bg-blue-100 dark:bg-blue-950 py-12 text-center">
+    <h1 class="text-4xl font-bold text-blue-800 dark:text-white mb-2">Real Estate Tips & Stories</h1>
+    <p class="text-gray-700 dark:text-gray-300 text-lg">Explore guides, news, and expert advice</p>
+  </section>
+
+  <!-- Blog Posts -->
+  <section class="max-w-6xl mx-auto px-6 py-16 grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    
+    <!-- Post 1 -->
+    <div class="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden hover:shadow-xl transition">
+      <img src="images/blog1.jpg" class="w-full h-48 object-cover" alt="Blog 1">
+      <div class="p-5">
+        <h2 class="text-xl font-bold mb-2">5 Mistakes to Avoid When Renting</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Learn from common renter pitfalls and make smarter choices.</p>
+        <a href="blog-post.html" class="inline-block mt-4 text-blue-600 hover:underline">Read More</a>
+      </div>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden hover:shadow-xl transition">
+      <img src="images/blog2.jpg" class="w-full h-48 object-cover" alt="Blog 2">
+      <div class="p-5">
+        <h2 class="text-xl font-bold mb-2">Top 10 Neighborhoods in Lagos</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Discover where to live based on budget, lifestyle, and comfort.</p>
+        <a href="blog-post.html" class="inline-block mt-4 text-blue-600 hover:underline">Read More</a>
+      </div>
+    </div>
+
+    <!-- Post 3 -->
+    <div class="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden hover:shadow-xl transition">
+      <img src="images/blog3.jpg" class="w-full h-48 object-cover" alt="Blog 3">
+      <div class="p-5">
+        <h2 class="text-xl font-bold mb-2">Tips for First-Time Landlords</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Starting out as a landlord? Here’s how to succeed from day one.</p>
+        <a href="blog-post.html" class="inline-block mt-4 text-blue-600 hover:underline">Read More</a>
+      </div>
+    </div>
+
+    <!-- Post 4 -->
+    <div class="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden hover:shadow-xl transition">
+      <img src="images/blog4.jpg" class="w-full h-48 object-cover" alt="Blog 4">
+      <div class="p-5">
+        <h2 class="text-xl font-bold mb-2">What to Look For in Short-Term Rentals</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Whether for work or holiday, here's how to find the right fit.</p>
+        <a href="blog-post.html" class="inline-block mt-4 text-blue-600 hover:underline">Read More</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-gray-800 text-center py-6 text-sm text-gray-500 dark:text-gray-400 border-t dark:border-gray-700">
+    &copy; 2025 HomeEase Rentals. All rights reserved.
+  </footer>
+
+  <!-- Dark Mode Persistence -->
+  <script>
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</body>
+</html>

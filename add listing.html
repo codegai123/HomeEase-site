@@ -1,0 +1,84 @@
+<form id="addListingForm" class="space-y-6">
+  <div>
+    <label class="block font-medium mb-1">Property Title</label>
+    <input type="text" id="title" placeholder="e.g. Spacious Apartment in VI" class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-400" required />
+  </div>
+
+  <div>
+    <label class="block font-medium mb-1">Location</label>
+    <input type="text" id="location" placeholder="e.g. Victoria Island, Lagos" class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-400" required />
+  </div>
+
+  <div>
+    <label class="block font-medium mb-1">Monthly Price (₦)</label>
+    <input type="number" id="price" placeholder="e.g. 200000" class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-400" required />
+  </div>
+
+  <div>
+    <label class="block font-medium mb-1">Description</label>
+    <textarea id="description" rows="5" placeholder="Describe the property..." class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-400" required></textarea>
+  </div>
+
+  <div>
+    <label class="block font-medium mb-1">Amenities (comma separated)</label>
+    <input type="text" id="amenities" placeholder="WiFi, AC, Parking" class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-400" />
+  </div>
+
+  <div>
+    <label class="block font-medium mb-1">Upload Image (URL for now)</label>
+    <input type="text" id="image" placeholder="https://example.com/image.jpg" class="w-full p-3 border rounded-md bg-white focus:ring-2 focus:ring-blue-400" />
+  </div>
+
+  <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700">
+    Submit Listing
+  </button>
+</form>
+
+<script>
+  document.getElementById("addListingForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const title = document.getElementById("title").value;
+    const location = document.getElementById("location").value;
+    const price = document.getElementById("price").value;
+    const description = document.getElementById("description").value;
+    const amenities = document.getElementById("amenities").value;
+    const image = document.getElementById("image").value || "https://source.unsplash.com/600x400/?house";
+
+    const newListing = {
+      title,
+      location,
+      price,
+      description,
+      amenities,
+      image,
+      rating: "★ 4.8",
+      status: "Active"
+    };
+
+    const listings = JSON.parse(localStorage.getItem("homeeaseListings") || "[]");
+    listings.push(newListing);
+    localStorage.setItem("homeeaseListings", JSON.stringify(listings));
+
+    alert("Listing saved successfully!");
+    window.location.href = "dashboard.html"; // or use 'listings.html'
+    
+    document.querySelector("form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    title: form.title.value,
+    location: form.location.value,
+    price: form.price.value,
+    description: form.description.value,
+    amenities: form.amenities.value,
+    image: URL.createObjectURL(form.image.files[0]),
+    rating: "★ 4.5"
+  };
+  const all = JSON.parse(localStorage.getItem("homeeaseListings") || "[]");
+  all.push(data);
+  localStorage.setItem("homeeaseListings", JSON.stringify(all));
+  window.location.href = "listings.html";
+});
+  });
+</script>

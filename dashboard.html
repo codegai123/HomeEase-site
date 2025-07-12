@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - HomeEase Rentals</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 shadow-md bg-white">
+    <div class="text-2xl font-bold text-blue-600">HomeEase</div>
+    <nav class="hidden md:flex space-x-6">
+      <a href="index.html" class="hover:text-blue-500">Home</a>
+      <a href="listings.html" class="hover:text-blue-500">Listings</a>
+      <a href="contact.html" class="hover:text-blue-500">Contact</a>
+      <a href="dashboard.html" class="text-blue-600 font-semibold">Dashboard</a>
+    </nav>
+    <div class="space-x-4">
+      <button class="text-sm text-gray-600 hover:text-blue-600">Logout</button>
+    </div>
+  </header>
+
+  <!-- Dashboard Overview -->
+  <section class="max-w-7xl mx-auto py-12 px-6">
+    <h1 class="text-3xl font-bold mb-8 text-blue-700">Welcome, 👋</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <!-- Your Listings Table -->
+<div class="bg-white p-6 rounded-lg shadow">
+  <h2 class="text-2xl font-bold mb-4">Your Listings</h2>
+
+  <table class="min-w-full text-left">
+    <thead>
+      <tr class="border-b text-gray-600">
+        <th class="py-2">Property</th>
+        <th class="py-2">Location</th>
+        <th class="py-2">Status</th>
+        <th class="py-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="listingTableBody">
+      <!-- JS will insert rows here -->
+    </tbody>
+  </table>
+
+  <a href="add listing.html" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
+    + Add New Listing
+  </a>
+</div>
+  
+  <!-- Floating Chatbot -->
+<div id="chatbot" class="fixed bottom-6 right-6 z-50">
+  <!-- Chat Bubble Button -->
+  <button id="chatToggle" class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700">
+    💬
+  </button>
+
+  <!-- Chat Window -->
+  <div id="chatWindow" class="hidden mt-3 w-80 bg-white border border-gray-300 rounded-lg shadow-xl flex flex-col overflow-hidden">
+    <div class="bg-blue-600 text-white p-4 font-bold">HomeEase Q&A</div>
+    
+    <div id="chatContent" class="p-4 h-64 overflow-y-auto space-y-3 text-sm">
+      <div class="bg-gray-100 p-3 rounded">👋 Hi! Ask me about bookings, prices, or locations.</div>
+    </div>
+    
+    <form id="chatForm" class="flex border-t p-2">
+      <input id="userInput" type="text" placeholder="Ask a question..." class="flex-1 px-3 py-2 text-sm border rounded focus:outline-none" required>
+      <button class="ml-2 text-white bg-blue-600 px-3 rounded hover:bg-blue-700 text-sm">Send</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const chatToggle = document.getElementById('chatToggle');
+  const chatWindow = document.getElementById('chatWindow');
+  const chatForm = document.getElementById('chatForm');
+  const userInput = document.getElementById('userInput');
+  const chatContent = document.getElementById('chatContent');
+
+  // Show/Hide chat window
+  chatToggle.addEventListener('click', () => {
+    chatWindow.classList.toggle('hidden');
+  });
+
+  // Fake Q&A logic
+  const responses = {
+    "price": "Prices start at ₦150,000/month. Check listings for details.",
+    "location": "We cover Lagos, Abuja, and more.",
+    "book": "Click 'View Details' on any property, then use the contact form to book.",
+    "contact": "Use the 'Contact' page or chat here anytime.",
+    "sign": "Sign up via the top right button for full features."
+  };
+
+  chatForm.onsubmit = (e) => {
+    e.preventDefault();
+    const question = userInput.value.trim();
+    if (!question) return;
+
+    // Show user message
+    const userMsg = document.createElement('div');
+    userMsg.className = 'bg-blue-100 p-2 rounded self-end';
+    userMsg.textContent = question;
+    chatContent.appendChild(userMsg);
+
+    // Auto-response
+    setTimeout(() => {
+      const reply = document.createElement('div');
+      reply.className = 'bg-gray-100 p-2 rounded';
+      let answer = "🤖 Sorry, I didn't get that. Try asking about price or location.";
+      for (let key in responses) {
+        if (question.toLowerCase().includes(key)) {
+          answer = responses[key];
+          break;
+        }
+      }
+      reply.textContent = answer;
+      chatContent.appendChild(reply);
+      chatContent.scrollTop = chatContent.scrollHeight;
+    }, 400);
+
+    userInput.value = "";
+    chatContent.scrollTop = chatContent.scrollHeight;
+  };
+</script>
+      <form id="addListingForm" class="space-y-4">
+  <input type="text" id="property" placeholder="Property Name" required class="border p-2 w-full">
+  <input type="text" id="location" placeholder="Location" required class="border p-2 w-full">
+  <select id="status" class="border p-2 w-full">
+    <option value="Active">Active</option>
+    <option value="Pending">Pending</option>
+  </select>
+  <a href="success page .html" type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</a>
+</form>
+
+<script>
+  document.getElementById('addListingForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const listing = {
+      property: document.getElementById('property').value,
+      location: document.getElementById('location').value,
+      status: document.getElementById('status').value,
+    };
+
+    const existing = JSON.parse(localStorage.getItem('homeeaseListings')) || [];
+    existing.push(listing);
+    localStorage.setItem('homeeaseListings', JSON.stringify(existing));
+
+    alert("Listing added successfully!");
+    window.location.href = "dashboard.html";
+  });
+</script>
+
+  <!-- Footer -->
+  <footer class="bg-white text-center py-6 text-sm text-gray-500 border-t mt-12">
+    &copy; 2025 HomeEase Rentals. All rights reserved.
+  </footer>
+
+</body>
+</html>

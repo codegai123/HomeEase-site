@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - HomeEase Rentals</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 shadow-md bg-white">
+    <div class="text-2xl font-bold text-blue-600">HomeEase</div>
+    <nav class="hidden md:flex space-x-6">
+      <a href="index.html" class="hover:text-blue-500">Home</a>
+      <a href="listings.html" class="hover:text-blue-500">Listings</a>
+      <a href="contact.html" class="text-blue-600 font-semibold">Contact</a>
+    </nav>
+    <div class="space-x-4">
+      <button class="text-sm text-gray-600 hover:text-blue-600">Login</button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Sign Up</button>
+    </div>
+  </header>
+
+  <!-- Contact Banner -->
+  <section class="bg-blue-100 py-12 text-center">
+    <h1 class="text-4xl font-bold text-blue-800 mb-2">Contact or Book Now</h1>
+    <p class="text-gray-700 text-lg">We’d love to help you reserve your perfect home</p>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="max-w-3xl mx-auto bg-white p-8 my-12 rounded-xl shadow-md">
+    <form action="success-page.html" method="GET" class="space-y-6">
+
+      <div>
+        <label class="block font-medium mb-1">Full Name</label>
+        <input type="text" name="name" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400" placeholder="John Doe" required />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Email Address</label>
+        <input type="email" name="email" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400" placeholder="john@example.com" required />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-medium mb-1">Check-in Date</label>
+          <input type="date" name="checkin" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400" required />
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Check-out Date</label>
+          <input type="date" name="checkout" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400" required />
+        </div>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Message</label>
+        <textarea name="message" rows="5" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400" placeholder="Tell us what you're looking for..." required></textarea>
+      </div>
+
+<a href="success page.html" class="w-full block text-center bg-blue-600 text-white py-3 rounded-md text-lg font-semibold hover:bg-blue-700">
+  Send Request
+</a>
+
+    </form>
+  </section>
+
+  <!-- Floating Chatbot -->
+  <div id="chatbot" class="fixed bottom-6 right-6 z-50">
+    <button id="chatToggle" class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700">
+      💬
+    </button>
+
+    <div id="chatWindow" class="hidden mt-3 w-80 bg-white border border-gray-300 rounded-lg shadow-xl flex flex-col overflow-hidden">
+      <div class="bg-blue-600 text-white p-4 font-bold">HomeEase Q&A</div>
+      <div id="chatContent" class="p-4 h-64 overflow-y-auto space-y-3 text-sm">
+        <div class="bg-gray-100 p-3 rounded">👋 Hi! Ask me about bookings, prices, or locations.</div>
+      </div>
+      <form id="chatForm" class="flex border-t p-2">
+        <input id="userInput" type="text" placeholder="Ask a question..." class="flex-1 px-3 py-2 text-sm border rounded focus:outline-none" required>
+        <button class="ml-2 text-white bg-blue-600 px-3 rounded hover:bg-blue-700 text-sm">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatForm = document.getElementById('chatForm');
+    const userInput = document.getElementById('userInput');
+    const chatContent = document.getElementById('chatContent');
+
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.toggle('hidden');
+    });
+
+    const responses = {
+      "price": "Prices start at ₦150,000/month. Check listings for details.",
+      "location": "We cover Lagos, Abuja, and more.",
+      "book": "Click 'View Details' on any property, then use the contact form to book.",
+      "contact": "Use the 'Contact' page or chat here anytime.",
+      "sign": "Sign up via the top right button for full features."
+    };
+
+    chatForm.onsubmit = (e) => {
+      e.preventDefault();
+      const question = userInput.value.trim();
+      if (!question) return;
+
+      const userMsg = document.createElement('div');
+      userMsg.className = 'bg-blue-100 p-2 rounded self-end';
+      userMsg.textContent = question;
+      chatContent.appendChild(userMsg);
+
+      setTimeout(() => {
+        const reply = document.createElement('div');
+        reply.className = 'bg-gray-100 p-2 rounded';
+        let answer = "🤖 Sorry, I didn't get that. Try asking about price or location.";
+        for (let key in responses) {
+          if (question.toLowerCase().includes(key)) {
+            answer = responses[key];
+            break;
+          }
+        }
+        reply.textContent = answer;
+        chatContent.appendChild(reply);
+        chatContent.scrollTop = chatContent.scrollHeight;
+      }, 400);
+
+      userInput.value = "";
+      chatContent.scrollTop = chatContent.scrollHeight;
+    };
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-white text-center py-6 text-sm text-gray-500 border-t mt-12">
+    &copy; 2025 HomeEase Rentals. All rights reserved.
+  </footer>
+
+</body>
+</html>
