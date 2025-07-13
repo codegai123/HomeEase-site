@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HomeEase Rentals</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white text-gray-900">
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 
   <!-- Header -->
-  <header class="flex justify-between items-center px-6 py-4 shadow-md">
+  <header class="flex justify-between items-center px-6 py-4 shadow-md bg-white dark:bg-gray-800">
     <div class="text-2xl font-bold text-blue-600">HomeEase</div>
     <nav class="hidden md:flex space-x-6">
-      <a href="#" class="hover:text-blue-500">Home</a>
-      <a href="#" class="hover:text-blue-500">Listings</a>
-      <a href="#" class="hover:text-blue-500">About</a>
+      <a href="index.html" class="hover:text-blue-500">Home</a>
+      <a href="listings.html" class="hover:text-blue-500">Listings</a>
+      <a href="about.html" class="hover:text-blue-500">About</a>
       <a href="contact.html" class="hover:text-blue-500">Contact</a>
     </nav>
     <div class="space-x-4">
-      <a href="login page.html" class="text-sm text-gray-600 hover:text-blue-600">Login</button>
-      <a href="sign up.html" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Sign Up</a>
+      <button class="text-sm text-gray-600 dark:text-gray-200 hover:text-blue-600">Login</button>
+      <a href="login-page.html" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Sign Up</a>
     </div>
   </header>
 
@@ -29,98 +29,112 @@
     <div class="relative z-10 flex flex-col justify-center items-center text-center text-white h-full px-4">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Find Your Perfect Rental Home</h1>
       <p class="text-lg md:text-xl mb-6">Search from thousands of verified listings</p>
-      
+
       <!-- Search Bar -->
-      <div class="bg-white rounded-lg shadow-md p-4 w-full max-w-3xl grid grid-cols-1 md:grid-cols-4 gap-2">
-        <input type="text" placeholder="Location" class="border p-2 rounded w-full" />
-<input type="date" class="border p-2 rounded w-full" />
-<input type="number" placeholder="Guests" class="border p-2 rounded w-full" />
-<a href="listings.html" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">Search</a>
+      <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-md p-4 w-full max-w-3xl grid grid-cols-1 md:grid-cols-4 gap-2">
+        <input type="text" placeholder="Location" class="border p-2 rounded w-full dark:bg-gray-700 dark:border-gray-600" />
+        <input type="date" class="border p-2 rounded w-full dark:bg-gray-700 dark:border-gray-600" />
+        <input type="number" placeholder="Guests" class="border p-2 rounded w-full dark:bg-gray-700 dark:border-gray-600" />
+        <a href="listings.html" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full text-center">Search</a>
       </div>
     </div>
   </section>
-  
-  <!-- Floating Chatbot -->
-<div id="chatbot" class="fixed bottom-6 right-6 z-50">
-  <!-- Chat Bubble Button -->
-  <button id="chatToggle" class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700">
-    💬
-  </button>
 
-  <!-- Chat Window -->
-  <div id="chatWindow" class="hidden mt-3 w-80 bg-white border border-gray-300 rounded-lg shadow-xl flex flex-col overflow-hidden">
-    <div class="bg-blue-600 text-white p-4 font-bold">HomeEase Q&A</div>
-    
-    <div id="chatContent" class="p-4 h-64 overflow-y-auto space-y-3 text-sm">
-      <div class="bg-gray-100 p-3 rounded">👋 Hi! Ask me about bookings, prices, or locations.</div>
+  <!-- Why Choose Us -->
+  <section class="px-6 py-12 text-center bg-gray-50 dark:bg-gray-900">
+    <h2 class="text-3xl font-bold mb-6">Why Choose HomeEase?</h2>
+    <p class="text-lg mb-4 max-w-2xl mx-auto">We simplify your rental experience with verified listings, secure bookings, and customer support that actually responds.</p>
+    <div class="grid md:grid-cols-3 gap-6 mt-8">
+      <div class="p-6 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow">
+        <h3 class="font-semibold text-xl mb-2">Verified Listings</h3>
+        <p>Every property is carefully verified for accuracy and safety.</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow">
+        <h3 class="font-semibold text-xl mb-2">Flexible Booking</h3>
+        <p>Rent monthly, yearly, or short-term — your call.</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow">
+        <h3 class="font-semibold text-xl mb-2">24/7 Support</h3>
+        <p>Talk to real humans when you need help — anytime.</p>
+      </div>
     </div>
-    
-    <form id="chatForm" class="flex border-t p-2">
-      <input id="userInput" type="text" placeholder="Ask a question..." class="flex-1 px-3 py-2 text-sm border rounded focus:outline-none" required>
-      <button class="ml-2 text-white bg-blue-600 px-3 rounded hover:bg-blue-700 text-sm">Send</button>
-    </form>
+  </section>
+
+  <!-- Floating Chatbot -->
+  <div id="chatbot" class="fixed bottom-6 right-6 z-50">
+    <!-- Chat Bubble Button -->
+    <button id="chatToggle" class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700">
+      💬
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chatWindow" class="hidden mt-3 w-80 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-xl flex flex-col max-h-[500px]">
+      <div class="bg-blue-600 text-white p-4 font-bold">HomeEase Q&A</div>
+
+      <div id="chatContent" class="p-4 h-64 overflow-y-auto space-y-3 text-sm flex flex-col">
+        <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded text-gray-900 dark:text-gray-100">👋 Hi! Ask me about bookings, prices, or locations.</div>
+      </div>
+
+      <form id="chatForm" class="flex border-t p-2 bg-white dark:bg-gray-800">
+        <input id="userInput" type="text" placeholder="Ask a question..." class="flex-1 px-3 py-2 text-sm border rounded focus:outline-none text-gray-900 dark:text-gray-100 dark:bg-gray-700" required>
+        <button class="ml-2 text-white bg-blue-600 px-3 rounded hover:bg-blue-700 text-sm">Send</button>
+      </form>
+    </div>
   </div>
-</div>
 
-<script>
-  const chatToggle = document.getElementById('chatToggle');
-  const chatWindow = document.getElementById('chatWindow');
-  const chatForm = document.getElementById('chatForm');
-  const userInput = document.getElementById('userInput');
-  const chatContent = document.getElementById('chatContent');
+  <!-- Chatbot Script -->
+  <script>
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatForm = document.getElementById('chatForm');
+    const userInput = document.getElementById('userInput');
+    const chatContent = document.getElementById('chatContent');
 
-  // Show/Hide chat window
-  chatToggle.addEventListener('click', () => {
-    chatWindow.classList.toggle('hidden');
-  });
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.toggle('hidden');
+    });
 
-  // Fake Q&A logic
-  const responses = {
-    "price": "Prices start at ₦150,000/month. Check listings for details.",
-    "location": "We cover Lagos, Abuja, and more.",
-    "book": "Click 'View Details' on any property, then use the contact form to book.",
-    "contact": "Use the 'Contact' page or chat here anytime.",
-    "sign": "Sign up via the top right button for full features."
-  };
+    const responses = {
+      "price": "Prices start at ₦150,000/month. Check listings for details.",
+      "location": "We cover Lagos, Abuja, and more.",
+      "book": "Click 'View Details' on any property, then use the contact form to book.",
+      "contact": "Use the 'Contact' page or chat here anytime.",
+      "sign": "Sign up via the top right button for full features."
+    };
 
-  chatForm.onsubmit = (e) => {
-    e.preventDefault();
-    const question = userInput.value.trim();
-    if (!question) return;
+    chatForm.onsubmit = (e) => {
+      e.preventDefault();
+      const question = userInput.value.trim();
+      if (!question) return;
 
-    // Show user message
-    const userMsg = document.createElement('div');
-    userMsg.className = 'bg-blue-100 p-2 rounded self-end';
-    userMsg.textContent = question;
-    chatContent.appendChild(userMsg);
+      const userMsg = document.createElement('div');
+      userMsg.className = 'bg-blue-100 dark:bg-blue-900 p-2 rounded self-end text-right text-gray-900 dark:text-white';
+      userMsg.textContent = question;
+      chatContent.appendChild(userMsg);
 
-    // Auto-response
-    setTimeout(() => {
-      const reply = document.createElement('div');
-      reply.className = 'bg-gray-100 p-2 rounded';
-      let answer = "🤖 Sorry, I didn't get that. Try asking about price or location.";
-      for (let key in responses) {
-        if (question.toLowerCase().includes(key)) {
-          answer = responses[key];
-          break;
+      setTimeout(() => {
+        const reply = document.createElement('div');
+        reply.className = 'bg-gray-100 dark:bg-gray-700 p-2 rounded text-gray-900 dark:text-gray-100';
+        let answer = "🤖 Sorry, I didn't get that. Try asking about price or location.";
+        for (let key in responses) {
+          if (question.toLowerCase().includes(key)) {
+            answer = responses[key];
+            break;
+          }
         }
-      }
-      reply.textContent = answer;
-      chatContent.appendChild(reply);
-      chatContent.scrollTop = chatContent.scrollHeight;
-    }, 400);
+        reply.textContent = answer;
+        chatContent.appendChild(reply);
+        chatContent.scrollTop = chatContent.scrollHeight;
+      }, 400);
 
-    userInput.value = "";
-    chatContent.scrollTop = chatContent.scrollHeight;
-  };
-</script>
-  
-  
+      userInput.value = "";
+      chatContent.scrollTop = chatContent.scrollHeight;
+    };
+  </script>
+
   <!-- Footer -->
-  <footer class="bg-white text-center py-6 text-sm text-gray-500 border-t mt-12">
+  <footer class="bg-white dark:bg-gray-800 text-center py-6 text-sm text-gray-500 dark:text-gray-400 border-t mt-12">
     &copy; 2025 HomeEase Rentals. All rights reserved.
   </footer>
-
-
 </body>
 </html>
